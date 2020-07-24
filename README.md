@@ -8,14 +8,14 @@ I'm not a musician, I just happen to own an electric guitar for testing, so my m
 2. Save the Foruier transform to find the distribution of component frequencies (ranging between 50 and 1500Hz). This is done using saveFFT.py
 3. Take in live audio data and compare the Fourier tranform to the saved ones to find the relative weight of the component strings
 
-So far this only works for 6 base notes (E2, A2, etc...) but I have a couple untested ideas on how to expand this for all possible finger combinations
+So far this only works for the base notes of the 6 strings (E2, A2, etc...) but I have a couple untested ideas on how to expand this for all possible finger combinations
 
 
 #### Why I think this doesnt work as well as I expected:
 
-The method treats fourier transforms as 1450 dimensional vectors (a single data point for every frequency from 50 to 1500hz) and uses the least squares method to approximate a best fit for the live FT as a sum of the 6 recorded FTs.
+The method treats Fourier transforms as 1450 dimensional vectors (a single data point for every frequency from 50 to 1500hz) and uses the least squares method to approximate a best fit for the live FT as a sum of the 6 recorded FTs.
 
-This method is very sensitive to out of tune strings, as sharp peaks in an FT may be close but not overlap. If this is the case, the lease squares approximation will assign a weight of close to 0 to the played string, since an out of phase peak would be increasing error. Insturments that have very regular FTs (such as a keyboard) worked very well, but the guitar did not.
+This method is very sensitive to out of tune strings, as sharp peaks in an FT may be close but not overlap. If this is the case, the least squares approximation will assign a weight of close to 0 to the played string, since an out of phase peak would be increasing error. Insturments that have very regular FTs (such as a keyboard) worked very well, but the guitar did not.
 
 However, even when the 6 FTs were recorded immidiately before detecting strings (using the inbuilt tune to string method), the corellation between string volume and detected weight remained weak (althoug it improved by 7 orders of magnitude). This may be due to my low quality strings, but the strength of string frequencies vary over time after they've been plucked. 
 
