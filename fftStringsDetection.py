@@ -29,8 +29,6 @@ def getClosestNote(note):
 
 # called on button press
 # replaces the current fft date of the detected note with what is currently buffered
-
-
 def tuneDetectorCallback():
     string_ffts[:, noteMap[note]-1] = ydata[50:1500]
     return
@@ -49,8 +47,6 @@ def getFFTMatrix(files):
     return string_ffts
 
 # draw figures and update window
-
-
 def updateGraphics():
     fig.canvas.draw()
     fig.canvas.flush_events()
